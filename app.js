@@ -3,11 +3,15 @@ const express = require('express');
 
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const expressHbs = require('express-handlebars');
 
 const app = express();
 
+app.engine('hbs', expressHbs({ layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs' }));
+
 // setting the template engine
-app.set('view engine', 'pug');
+app.set('view engine', 'hbs');
+// app.set('view engine', 'pug');
 // where to find them
 app.set('views', 'views');
 
